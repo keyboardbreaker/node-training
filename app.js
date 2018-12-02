@@ -1,12 +1,20 @@
-var person = {
-    firstName: 'John',
-    lastName: 'Doe',
-    greet: function() {
-        console.log(`Hello, ${this.firstName} ${this.lastName}!` );
-    }
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
 }
 
-person.greet();
+Person.prototype.greet = function() {
+    console.log(`Hello, ${this.firstName} ${this.lastName}`);
+}
 
-console.log(person['firstName']); //useful
-// for when dynamically which property you're grabbing
+var john = new Person('John', 'Doe');
+john.greet();
+
+var jane = new Person('Jane', 'Smith');
+jane.greet();
+
+//look at the prototype method
+console.log(john.__proto__);
+console.log(jane.__proto__);
+//are they the same prototype object
+console.log(john.__proto__ === jane.__proto__);
